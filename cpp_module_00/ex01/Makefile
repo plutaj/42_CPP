@@ -4,8 +4,10 @@ CXXFLAGS = -Wall -Wextra -std=c++98
 
 TARGET = phonebook
 
-SRC = phonebook.cpp \
-phonebook_utils.cpp \
+SRC = main_utils.cpp \
+main.cpp \
+PhoneBook.cpp \
+Contact.cpp
 
 all: $(TARGET)
 
