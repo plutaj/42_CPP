@@ -6,13 +6,15 @@
 #include <string>
 
 class PhoneBook{
+
     private:
-    int index;
+    	int index;
 
     public:
         Contact contacts[8];
 
         PhoneBook();
+		~PhoneBook();
         void    add_contact();
 };
 

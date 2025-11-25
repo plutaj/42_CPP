@@ -1,4 +1,5 @@
 #include "main.hpp"
+#include <cstdlib>
 
 int main(){
     PhoneBook   phonebook;
@@ -8,18 +9,11 @@ int main(){
     first_message();
     while (1){
         input = get_input();
-        if (!valid_input(input))
-            std::cout << "Name can not contain spaces and cannot be empty" << "\n";
-        else if (input == "ADD")
+        if (input == "ADD")
             phonebook.add_contact();
-        else if (input == "SEARCH"){
+        else if (input == "SEARCH")
             print_list(&phonebook);
-            std::cout << "Please write index of contact to see phone number: " << "\n";
-            // input.clear();
-            input = get_input();
-            print_contact(&phonebook, input);
-        }
-        else if (input == "EXIT"){
+        else if (input == "EXIT" || std::cin.eof()){
             std::cout << "exiting..." << std::endl;
             return (0);
         }
