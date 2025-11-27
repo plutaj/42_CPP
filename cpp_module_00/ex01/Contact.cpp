@@ -10,6 +10,8 @@ Contact::Contact()
     this->darkest_secret = "";
 }
 
+Contact::~Contact() {}
+
 void Contact::setFirst_name(const std::string& first_name) {
     this->first_name = first_name;
 }

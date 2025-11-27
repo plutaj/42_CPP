@@ -8,7 +8,7 @@
 class PhoneBook{
 
     private:
-    	int index;
+    	int		index;
 
     public:
         Contact contacts[8];
@@ -17,5 +17,7 @@ class PhoneBook{
 		~PhoneBook();
         void    add_contact();
 };
+
+int	is_contact_empty(Contact contact);
 
 #endif

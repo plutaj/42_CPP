@@ -1,6 +1,6 @@
 #include "main.hpp"
 
-void    first_message(){
+void    first_message() {
 
     std::cout << "Please choose one of following: " << std::endl;
     std::cout << "ADD: save a new contact" << std::endl;
@@ -8,7 +8,7 @@ void    first_message(){
     std::cout << "EXIT: close a phonebook" << std::endl;
 }
 
-std::string format_column(std::string str){
+std::string format_column(std::string str) {
 
     std::string temp;
 
@@ -23,36 +23,41 @@ std::string format_column(std::string str){
     return (temp);
 }
 
-void    print_list(PhoneBook *phonebook)
-{
+void    print_list(PhoneBook *phonebook) {
     int i = 0;
 	std::string input;
 
-	if (!valid_input(phonebook->contacts[i].getFirst_name())){
-		std::cout << "Invalid input" << std::endl;
+	if (!valid_input(phonebook->contacts[i].getFirst_name())) {
+		std::cout << "Phone list is empty" << std::endl;
 		return ;
 	}
-    while (!phonebook->contacts[i].getFirst_name().empty()){
+    while (!phonebook->contacts[i].getFirst_name().empty()) {
         std::cout << i << "|" << format_column(phonebook->contacts[i].getFirst_name())
             << "|" << format_column(phonebook->contacts[i].getLast_name()) << "|"
             << format_column(phonebook->contacts[i].getNickname()) << "|" << "\n";
-        i++;
+		if (i < 7)
+			i++;
+		else
+			break ;
     }
 	std::cout << "Please write index of contact to see phone number: " << "\n";
 	input = get_input();
-	print_contact(phonebook, input);
+	if (input[0] < '8' && input[0] >= '0')
+		print_contact(phonebook, input);
+	else
+		std::cout << "This is not valid index" << std::endl;
 }
 
-void    print_contact(PhoneBook *phonebook, std::string& input){
+void    print_contact(PhoneBook *phonebook, std::string& input) {
 
     int i;
 
-    if (input.length() > 1 || !valid_input(input)){
+    if (input.length() > 1 || !valid_input(input)) {
        std::cout << "Index can be maximum one digit and must be a number" << "\n";
        return ;
     }
     i = input[0] - '0';
-    if (!phonebook->contacts[i].getFirst_name().empty()){
+    if (!phonebook->contacts[i].getFirst_name().empty()) {
         if (input[0] < '9' && input[0] >= '0')
         {
             std::cout << "First name:     " << phonebook->contacts[i].getFirst_name() << "\n";
@@ -67,12 +72,25 @@ void    print_contact(PhoneBook *phonebook, std::string& input){
     return ;
 }
 
-bool    valid_input(const std::string input){
+bool    valid_input(const std::string input) {
 
     if (input.empty() || input[0] == ' ')
         return (false);
     return (true);
 }
+
+bool only_spaces(const std::string s) {
+
+    if (s.length() == 0)
+        return (false);
+
+    for (size_t i = 0; i < s.length(); i++) {
+        if (s[i] != ' ')
+            return (false);
+    }
+    return (true);
+}
+
 
 std::string get_input() {
 
