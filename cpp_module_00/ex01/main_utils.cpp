@@ -27,7 +27,7 @@ void    print_list(PhoneBook *phonebook) {
     int i = 0;
 	std::string input;
 
-	if (!valid_input(phonebook->contacts[i].getFirst_name())) {
+	if (only_spaces(phonebook->contacts[0].getFirst_name())) {
 		std::cout << "Phone list is empty" << std::endl;
 		return ;
 	}
@@ -52,7 +52,7 @@ void    print_contact(PhoneBook *phonebook, std::string& input) {
 
     int i;
 
-    if (input.length() > 1 || !valid_input(input)) {
+    if (input.length() > 1 || only_spaces(input)) {
        std::cout << "Index can be maximum one digit and must be a number" << "\n";
        return ;
     }
@@ -72,18 +72,10 @@ void    print_contact(PhoneBook *phonebook, std::string& input) {
     return ;
 }
 
-bool    valid_input(const std::string input) {
-
-    if (input.empty() || input[0] == ' ')
-        return (false);
-    return (true);
-}
-
 bool only_spaces(const std::string s) {
 
-    if (s.length() == 0)
-        return (false);
-
+	if (s.empty() || s.length() == 0)
+		return (true);
     for (size_t i = 0; i < s.length(); i++) {
         if (s[i] != ' ')
             return (false);

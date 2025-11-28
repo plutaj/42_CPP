@@ -19,15 +19,15 @@ void    PhoneBook::add_contact(){
 }
 
 int	is_contact_empty(Contact contact) {
-	if (only_spaces(contact.getFirst_name()) || contact.getFirst_name().empty())
+	if (only_spaces(contact.getFirst_name()))
 		return (1);
-	else if (only_spaces(contact.getLast_name()) || contact.getLast_name().empty())
+	else if (only_spaces(contact.getLast_name()))
 		return (1);
-	else if (only_spaces(contact.getNickname()) || contact.getNickname().empty())
+	else if (only_spaces(contact.getNickname()))
 		return (1);
-	else if (only_spaces(contact.getPhone_number()) || contact.getPhone_number().empty())
+	else if (only_spaces(contact.getPhone_number()))
 		return (1);
-	else if (only_spaces(contact.getDarkest_secret()) || contact.getDarkest_secret().empty())
+	else if (only_spaces(contact.getDarkest_secret()))
 		return (1);
 	else
 		return (0);
