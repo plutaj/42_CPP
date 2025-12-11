@@ -6,11 +6,14 @@
 /*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 18:36:21 by jozefpluta        #+#    #+#             */
-/*   Updated: 2025/12/01 20:20:32 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2025/12/11 20:17:38 by jozefpluta       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string> // Correct library for std::string
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
+
+#include <string>
 
 class Zombie {
     
@@ -29,3 +32,5 @@ class Zombie {
 
 Zombie* newZombie(std::string name);
 void    randomChump(std::string name);
+
+#endif
