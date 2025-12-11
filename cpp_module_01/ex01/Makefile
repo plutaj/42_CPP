@@ -4,8 +4,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 TARGET = zombie
 
 SRC = main.cpp \
-	newZombie.cpp \
-	randomChump.cpp \
+	zombieHorde.cpp \
 	Zombie.cpp
 
 OBJ = $(SRC:.cpp=.o)
