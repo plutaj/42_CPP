@@ -1,7 +1,7 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-TARGET = zombie
+TARGET = replace
 
 SRC = main.cpp
 

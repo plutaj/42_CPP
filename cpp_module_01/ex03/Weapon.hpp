@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:38:59 by jpluta            #+#    #+#             */
-/*   Updated: 2025/12/16 18:03:53 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/01/04 18:01:28 by jozefpluta       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ class Weapon {
 		
 	public:
 		Weapon();
+		Weapon(std::string type);
 		~Weapon();
 
 		void setType(std::string type);
-		const std::string& getType() const {};
+		const std::string& getType() const;
 
 	private:
 		std::string type;
