@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 08:15:40 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/01/11 08:16:10 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/01/12 17:04:51 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 int main() {
-    
-    
-    
-    return 0;
+
+	return 0;
 }

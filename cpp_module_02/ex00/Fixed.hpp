@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 08:15:37 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/01/11 09:09:14 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/01/13 17:49:18 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ class Fixed {
     
     public:
         Fixed();
+		Fixed(const Fixed& obj);
+		Fixed& operator=(const Fixed& obj);
         ~Fixed();
         int getRawBits( void ) const;
         void setRawBits( int const raw );
