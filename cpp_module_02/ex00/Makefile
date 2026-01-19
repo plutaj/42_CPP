@@ -1,10 +1,10 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-TARGET = exec
+TARGET = fixed
 
-SRC = main.cpp \
-	Fixed.cpp
+SRC = Fixed.cpp \
+	main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
