@@ -6,15 +6,26 @@
 /*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 08:15:34 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/01/26 18:28:30 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/01/26 18:37:59 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
+#include <cmath>
 
 Fixed::Fixed() : value(0) {
 	std::cout << "Default constructor called" << std::endl;
+}
+
+Fixed::Fixed(const int whole_num) {
+	std::cout << "Int constructor called" << std::endl;
+	value = whole_num << _fractionalBits;
+}
+
+Fixed::Fixed(const float float_num) {
+	std::cout << "Float constructor called" << std::endl;
+	value = roundf(float_num * (1 << _fractionalBits));
 }
 
 Fixed::Fixed(const Fixed& obj) : value(obj.value) {
@@ -29,6 +40,12 @@ Fixed& Fixed::operator=(const Fixed& obj) {
 	return *this;
 }
 
+std::ostream& operator<<(std::ostream& out, const Fixed& obj)
+{
+	out << obj.toFloat();
+	return out;
+}
+
 Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 }
@@ -41,4 +58,12 @@ int Fixed::getRawBits( void ) const {
 void Fixed::setRawBits( int const raw ) {
 	std::cout << "setRawBits member function called" << std::endl;
 	value = raw;
+}
+
+float Fixed::toFloat( void ) const {
+	return (value / (1 << _fractionalBits));
+}
+
+int Fixed::toInt( void ) const {
+	return (value >> _fractionalBits);
 }
