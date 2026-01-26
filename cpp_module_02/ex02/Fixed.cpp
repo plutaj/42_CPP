@@ -6,7 +6,7 @@
 /*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 08:15:34 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/01/26 18:37:59 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/01/26 18:51:01 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,76 @@ float Fixed::toFloat( void ) const {
 
 int Fixed::toInt( void ) const {
 	return (value >> _fractionalBits);
+}
+
+bool Fixed::operator>(const Fixed& other) const {
+	return this->value > other.value;
+}
+
+bool Fixed::operator<(const Fixed& other) const {
+	return this->value < other.value;
+}
+
+bool Fixed::operator>=(const Fixed& other) const {
+	return this->value >= other.value;
+}
+
+bool Fixed::operator<=(const Fixed& other) const {
+	return this->value <= other.value;
+}
+
+bool Fixed::operator==(const Fixed& other) const {
+	return this->value == other.value;
+}
+
+bool Fixed::operator!=(const Fixed& other) const {
+	return this->value != other.value;
+}
+
+Fixed Fixed::operator+(const Fixed& other) const {
+	Fixed result;
+	result.setRawBits(this->value + other.value);
+	return result;
+}
+
+Fixed Fixed::operator-(const Fixed& other) const {
+	Fixed result;
+	result.setRawBits(this->value - other.value);
+	return result;
+}
+
+Fixed Fixed::operator*(const Fixed& other) const {
+	Fixed result;
+	long tmp = (long)this->value * other.value; 
+	result.setRawBits(tmp >> _fractionalBits);
+	return result;
+}
+
+Fixed Fixed::operator/(const Fixed& other) const {
+	Fixed result;
+	long tmp = ((long)this->value << _fractionalBits) / other.value;
+	result.setRawBits(tmp);
+	return result;
+}
+
+Fixed& Fixed::operator++() {
+	this->value += 1;
+	return *this;
+}
+
+Fixed Fixed::operator++(int) {
+	Fixed temp(*this);
+	this->value += 1;
+	return temp;
+}
+
+Fixed& Fixed::operator--() {
+	this->value -= 1;
+	return *this;
+}
+
+Fixed Fixed::operator--(int) {
+	Fixed temp(*this);
+	this->value -= 1;
+	return temp;
 }
