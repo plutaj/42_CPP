@@ -6,7 +6,7 @@
 /*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 08:15:34 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/01/26 18:37:59 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/01/27 18:47:28 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void Fixed::setRawBits( int const raw ) {
 }
 
 float Fixed::toFloat( void ) const {
-	return (value / (1 << _fractionalBits));
+	return ((float)value / (1 << _fractionalBits));
 }
 
 int Fixed::toInt( void ) const {
