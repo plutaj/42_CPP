@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 08:15:37 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/01/26 18:56:04 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/01/29 18:50:27 by jozefpluta       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ class Fixed {
 		Fixed operator++(int);
 		Fixed& operator--();
 		Fixed operator--(int);
+
+		Fixed& min(Fixed& a, Fixed& b);
+		const Fixed& min(const Fixed& a, const Fixed& b);
+		Fixed& max(Fixed& a, Fixed& b);
+		const Fixed& max(const Fixed& a, const Fixed& b);
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& obj);

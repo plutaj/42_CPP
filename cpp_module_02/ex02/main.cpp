@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 08:15:40 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/01/27 19:13:50 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/01/29 18:54:26 by jozefpluta       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 int main(void) {
     Fixed a;
-    Fixed const b(10);
+    Fixed b(10);
     Fixed const c(42.42f);
     Fixed const d(b);
+    Fixed temp;
 
     a = Fixed(1234.4321f);
 
@@ -49,6 +50,13 @@ int main(void) {
     std::cout << "--a      = " << --a << std::endl;
     std::cout << "a--      = " << a-- << std::endl;
     std::cout << "a        = " << a << std::endl;
+
+    std::cout << "\n=== Min / Max ===" << std::endl;
+    
+    std::cout << "min is    = " << temp.min(a, b) << std::endl;
+    std::cout << "min is    = " << temp.min(c, d) << std::endl;
+    std::cout << "max is    = " << temp.max(a, b) << std::endl;
+    std::cout << "max is    = " << temp.max(c, d) << std::endl;
 
     return 0;
 }

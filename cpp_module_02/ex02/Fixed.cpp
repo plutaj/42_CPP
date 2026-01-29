@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 08:15:34 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/01/27 18:54:31 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/01/29 18:43:05 by jozefpluta       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void Fixed::setRawBits( int const raw ) {
 }
 
 float Fixed::toFloat( void ) const {
-	return ((float)value / (1 << _fractionalBits));
+	return ((float)this->value / (1 << _fractionalBits));
 }
 
 int Fixed::toInt( void ) const {
@@ -138,4 +138,20 @@ Fixed Fixed::operator--(int) {
 	Fixed temp(*this);
 	this->value -= 1;
 	return temp;
+}
+
+Fixed& Fixed::min(Fixed& a, Fixed& b) {
+    return (a < b) ? a : b;
+}
+
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b) {
+    return (a < b) ? a : b;
+}
+
+Fixed& Fixed::max(Fixed& a, Fixed& b) {
+    return (a < b) ? b : a;
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b) {
+    return (a < b) ? b : a;
 }
