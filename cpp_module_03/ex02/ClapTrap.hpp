@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 18:32:24 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/01/31 19:59:20 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/02/01 16:44:48 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef CLAP_TRAP_HPP
+#define CLAP_TRAP_HPP
 
 #include <iostream>
 
@@ -35,3 +38,5 @@ class ClapTrap {
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
 };
+
+#endif

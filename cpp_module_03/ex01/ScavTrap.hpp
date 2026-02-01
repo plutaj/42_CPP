@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 19:53:55 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/01/31 19:54:47 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/02/01 16:45:50 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef SCAV_TRAP_HPP
+#define SCAV_TRAP_HPP
 
 #include "ClapTrap.hpp"
 
@@ -23,3 +26,5 @@ class ScavTrap : public ClapTrap
         void attack(const std::string& target);
         void guardGate();
 };
+
+#endif

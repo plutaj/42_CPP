@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 19:53:53 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/01/31 20:04:19 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/02/01 16:28:43 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ ScavTrap::~ScavTrap() {
 void ScavTrap::attack(const std::string& target)
 {
     std::cout << "ScavTrap " << name << " fiercely attacks "
-              << target << ", causing " << attackDamage
-              << " points of damage!" << std::endl;
+		<< target << ", causing " << attackDamage
+		<< " points of damage!" << std::endl;
 }
 
 void ScavTrap::guardGate()
 {
     std::cout << "ScavTrap " << name
-              << " is now in Gate keeper mode." << std::endl;
+    	<< " is now in Gate keeper mode." << std::endl;
 }

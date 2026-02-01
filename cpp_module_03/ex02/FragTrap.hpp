@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 20:30:21 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/01/31 20:32:46 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/02/01 16:45:06 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef FRAG_TRAP_HPP
+#define FRAG_TRAP_HPP
 
 #include "ClapTrap.hpp"
 
@@ -22,3 +25,5 @@ class FragTrap : public ClapTrap {
 
         void highFivesGuys(void);
 };
+
+#endif
