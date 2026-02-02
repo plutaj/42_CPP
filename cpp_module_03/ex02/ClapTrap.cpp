@@ -6,7 +6,7 @@
 /*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 18:32:26 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/01/31 20:18:30 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/02/02 19:06:22 by jozefpluta       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,30 @@ unsigned int ClapTrap::getAttackDamage() {
 /* === functions === */
 
 void ClapTrap::attack(const std::string& target) {
-    std::cout << "ClapTrap " << name << " attacks " << target << ", causing <damage> points of damage!" << std::endl;
+	if (energyPoints > 0) {
+		std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
+		energyPoints--;
+	}
+	else
+		std::cout << "ClapTrap " << name << " has 0 energy points." << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
-    std::cout << "ClapTrap took damage from <target>, loosing " << amount << " hit points!" << std::endl;
+	if (hitPoints < amount) {
+		hitPoints = 0;
+		std::cout << "ClapTrap " << name << " took damage, loosing " << hitPoints << " hit points!" << std::endl;
+	}
+	else {
+		hitPoints -= amount;
+		std::cout << "ClapTrap " << name << " took damage, loosing " << amount << " hit points!" << std::endl;
+	}
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-    std::cout << "ClapTrap <name> repaired itself, and gets " << amount << "hit points!" << std::endl;
+	if (energyPoints > 0) {
+		hitPoints += amount;
+		std::cout << "ClapTrap " << name << " repaired itself, and gets " << amount
+			<< " of hit points! Now it has " << hitPoints << " of them." << std::endl;
+		energyPoints--;
+	}
 }

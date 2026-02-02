@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 18:32:26 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/02/01 16:27:25 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/02/02 19:28:21 by jozefpluta       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ void ClapTrap::attack(const std::string& target) {
 void ClapTrap::takeDamage(unsigned int amount) {
 	if (hitPoints < amount) {
 		hitPoints = 0;
-		std::cout << "ClapTrap " << name << " took damage, loosing " << hitPoints << " hit points!" << std::endl;
+		std::cout << "ClapTrap " << name << " took damage, losing " << hitPoints << " hit points!" << std::endl;
 	}
 	else {
 		hitPoints -= amount;
-		std::cout << "ClapTrap " << name << " took damage, loosing " << amount << " hit points!" << std::endl;
+		std::cout << "ClapTrap " << name << " took damage, losing " << amount << " hit points!" << std::endl;
 	}
 }
 
@@ -91,7 +91,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	if (energyPoints > 0) {
 		hitPoints += amount;
 		std::cout << "ClapTrap " << name << " repaired itself, and gets " << amount
-			<< " of hit points! Now it has " << hitPoints << "of them." << std::endl;
+			<< " of hit points! Now it has " << hitPoints << " of them." << std::endl;
 		energyPoints--;
 	}
 }
