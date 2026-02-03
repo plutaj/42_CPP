@@ -6,7 +6,7 @@
 /*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 17:34:54 by jpluta            #+#    #+#             */
-/*   Updated: 2026/02/03 17:50:01 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/02/03 19:24:51 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,14 @@ class Animal {
 
 	public:
 		Animal();
+		Animal(const std::string& type);
 		Animal(const Animal& obj);
 		Animal& operator=(const Animal& obj);
-		~Animal();
+		virtual ~Animal();
+
+		std::string getType() const ;
+		
+		virtual void makeSound(void) const;
 };
 
 #endif
