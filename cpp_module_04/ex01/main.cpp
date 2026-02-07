@@ -6,45 +6,35 @@
 /*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 18:34:55 by jpluta            #+#    #+#             */
-/*   Updated: 2026/02/05 17:52:00 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/02/05 18:09:37 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "WrongAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongCat.hpp"
+#include <iostream>
 
 int main() {
-	
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
+	const int size = 10;
+	Animal* animals[size];
 
-	delete meta;
-	delete j;
-	delete i;
+	for (int i = 0; i < size / 2; i++)
+		animals[i] = new Dog();
 
-	std::cout << "\n	*** Wrong ones ***	\n" << std::endl;
-	
-	const WrongAnimal* k = new WrongAnimal();
-	const WrongAnimal* l = new WrongCat();
+	for (int i = size / 2; i < size; i++)
+		animals[i] = new Cat();
 
-	k->makeSound();
-	l->makeSound();
+	std::cout << "---- Sounds ----" << std::endl;
+	for (int i = 0; i < size; i++)
+		animals[i]->makeSound();
 
-	delete k;
-	delete l;
+	std::cout << "---- Deleting ----" << std::endl;
+	for (int i = 0; i < size; i++)
+		delete animals[i];
 
-	
-	
+	std::cout << "---- Deep Copy Test ----" << std::endl;
+	Dog original;
+	Dog copy = original;
+
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 17:34:32 by jpluta            #+#    #+#             */
-/*   Updated: 2026/02/04 18:42:07 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/02/05 18:18:30 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,5 @@ std::string Animal::getType() const {
 	return type;
 }
 
-void Animal::makeSound(void) const {
-	std::cout << "* generic animal sound *" << std::endl;
-}
+void Animal::makeSound(void) const {}
 

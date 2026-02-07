@@ -1,13 +1,9 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-TARGET = exec
+TARGET = bureaucrat
 
-SRC = Animal.cpp \
-	Cat.cpp \
-	WrongAnimal.cpp \
-	WrongCat.cpp \
-	Dog.cpp \
+SRC = Bureaucrat.cpp \
 	main.cpp
 
 OBJ = $(SRC:.cpp=.o)

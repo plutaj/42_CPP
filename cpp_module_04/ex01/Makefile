@@ -5,8 +5,7 @@ TARGET = exec
 
 SRC = Animal.cpp \
 	Cat.cpp \
-	WrongAnimal.cpp \
-	WrongCat.cpp \
+	Brain.cpp \
 	Dog.cpp \
 	main.cpp
 
