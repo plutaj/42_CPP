@@ -6,7 +6,7 @@
 /*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 15:10:07 by jpluta            #+#    #+#             */
-/*   Updated: 2026/02/08 18:24:32 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/02/08 18:25:22 by jozefpluta       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <iostream>
 #include <ostream>
 #include <exception>
+
+class Form;
 
 class Bureaucrat {
 	
@@ -44,6 +46,7 @@ class Bureaucrat {
 			public:
 				const char* what() const throw();
 		};
+		void signForm(Form& form) const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);

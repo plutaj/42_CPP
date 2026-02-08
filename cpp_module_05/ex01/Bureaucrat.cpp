@@ -6,11 +6,12 @@
 /*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 15:10:03 by jpluta            #+#    #+#             */
-/*   Updated: 2026/02/08 17:43:45 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/02/08 18:28:55 by jozefpluta       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 /* ========== Constructors & destructors ========== */
 
@@ -25,7 +26,9 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade)
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj) 
-	: name(obj.name), grade(obj.grade) {}
+	:	name(obj.name),
+		grade(obj.grade)
+{}
 
 Bureaucrat::~Bureaucrat() {}
 
@@ -67,6 +70,18 @@ const char* Bureaucrat::GradeTooHighException::what() const throw() {
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
 	return "Grade too low";
+}
+
+void Bureaucrat::signForm(Form& form) const {
+	try {
+        form.beSigned(*this);
+        std::cout << getName() << " signed " << form.get_name()  << "." << std::endl;
+    }
+    catch (const Form::GradeTooLowException& e) {
+        std::cout << getName() << " couldn’t sign " << form.get_name()
+                  << " because " << e.what() << "." << std::endl;
+    }
+	
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b) {

@@ -4,6 +4,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 TARGET = exec
 
 SRC = Bureaucrat.cpp \
+	Form.cpp \
 	main.cpp
 
 OBJ = $(SRC:.cpp=.o)
