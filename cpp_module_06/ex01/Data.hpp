@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/14 15:06:04 by jpluta            #+#    #+#             */
-/*   Updated: 2026/02/15 08:13:59 by jozefpluta       ###   ########.fr       */
+/*   Created: 2026/02/15 08:34:44 by jozefpluta        #+#    #+#             */
+/*   Updated: 2026/02/15 08:55:44 by jozefpluta       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
+#ifndef DATA_HPP
+#define DATA_HPP
 
 #include <iostream>
 
-class ScalarConverter {
+class Data {
+    
+    private:
+        int _id;
+        std::string _name;
 
-	private:
-		ScalarConverter();
-		ScalarConverter(const ScalarConverter& obj);
-		ScalarConverter& operator=(const ScalarConverter& obj);
-		~ScalarConverter();
-	
-	public:
-		static void convert(const std::string& literal);
+    public:
+        Data(int id, std::string name);
+        Data(const Data& obj);
+        Data& operator=(const Data& obj);
+        ~Data();
+
+        int getId();
+        std::string getName();
 };
 
 #endif
