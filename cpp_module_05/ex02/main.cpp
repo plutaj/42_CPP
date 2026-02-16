@@ -6,7 +6,7 @@
 /*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 15:10:09 by jpluta            #+#    #+#             */
-/*   Updated: 2026/02/10 20:02:09 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/02/12 19:50:43 by jozefpluta       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int main() {
 	RobotomyRequestForm form3("Have no idea");
 	
 	nextLine();
-	// bob.signForm(form2);
-	bob.signForm(form3);
+	bob.signForm(form2);
+	// bob.signForm(form3);
 	// alice.signForm(form1);
 	// try {
 	// 	bob.executeForm(form1);
@@ -41,7 +41,7 @@ int main() {
 	// nextLine();
 
 	try {
-		bob.executeForm(form3);
+		bob.executeForm(form2);
 	}
 	catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;

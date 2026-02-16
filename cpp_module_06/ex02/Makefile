@@ -3,10 +3,8 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 TARGET = exec
 
-SRC = A.cpp \
-	B.cpp \
-	C.cpp \
-	Base.cpp
+SRC = Base.cpp \
+	main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
