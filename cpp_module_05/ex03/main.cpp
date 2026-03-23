@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 15:10:09 by jpluta            #+#    #+#             */
-/*   Updated: 2026/02/12 19:48:20 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/03/23 15:37:51 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,18 @@
 #include "Intern.hpp"
 #include <iostream>
 
-void nextLine(void);
-
 int main() {
 
 	Intern randomIntern;
-	// AForm *test;
+	AForm *test;
 
-	randomIntern.makeForm("presidential pardon", "testName");
+	// randomIntern.makeForm("presidential pardon", "testName");
 	// randomIntern.makeForm("robotomy request", "testName");
-	// randomIntern.makeForm("shruberry creation", "testName");
+	// randomIntern.makeForm("shrubbery creation", "testName");
 	// randomIntern.makeForm("error test", "testName");
 	
-	// test = randomIntern.makeForm("shruberry creation", "testName");
+	test = randomIntern.makeForm("shrubbery creation", "testName");
+	std::cout << test->get_name() << std::endl;
 	
-}
-
-void nextLine(void) {
-	std::cout << "\n" << std::endl;
+	delete test;
 }

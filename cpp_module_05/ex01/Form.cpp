@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:39:08 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/02/08 18:26:57 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/03/23 17:18:10 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 #include "Bureaucrat.hpp"
 
 /* ========== Constructors & destructor ========== */
+
+Form::Form() 
+	:	_name("default"),
+		_signed(false),
+		_gradeReqToSign(1),
+		_gradeReqToExecute(1)
+{}
 
 Form::Form(const std::string name, const int gradeReqToSign, 
             const int gradeReqToExecute) 
@@ -29,6 +36,13 @@ Form::Form(const Form& obj)
         _gradeReqToSign(obj._gradeReqToSign),
         _gradeReqToExecute(obj._gradeReqToExecute)
 {}
+
+Form& Form::operator=(const Form& obj) {
+	if (this != &obj) {
+		this->_signed = obj._signed;
+	}
+	return *this;
+}
 
 Form::~Form() {}
 

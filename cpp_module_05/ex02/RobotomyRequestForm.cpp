@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 17:43:23 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/02/10 20:02:41 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/03/23 17:37:10 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target)
     :   AForm("RobotomyRequestForm", 72, 45),
         _target(target)
 {}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj)
+	:	_target(obj._target)
+{}
+
+RobotomyRequestForm& operator=(const Bureaucrat& executor) {
+	
+}
 
 void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
     canBeExecuted(executor);

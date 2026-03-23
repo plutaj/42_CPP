@@ -6,7 +6,7 @@
 /*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 15:10:09 by jpluta            #+#    #+#             */
-/*   Updated: 2026/02/07 16:28:31 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/03/23 15:07:58 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 
 int main() {
+{
 	try {
 		Bureaucrat bob("Bob", 151);
 		std::cout << bob << std::endl;
@@ -21,16 +22,18 @@ int main() {
 	catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
-
+}
+{
 	try {
 		Bureaucrat alice("Alice", 149);
-		alice.decrementGrade();
 		alice.decrementGrade();
 		std::cout << alice << std::endl;
 	} 
 	catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
+}
+{
 	try {
 		Bureaucrat bob("Bob", 5);
 		std::cout << bob << std::endl;
@@ -42,4 +45,6 @@ int main() {
 	catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
+}
+	return 0;
 }

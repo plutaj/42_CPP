@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 15:10:03 by jpluta            #+#    #+#             */
-/*   Updated: 2026/02/08 18:28:55 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/03/23 17:27:07 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "Form.hpp"
 
 /* ========== Constructors & destructors ========== */
+
+Bureaucrat::Bureaucrat() : name("default"), grade(150) {}
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade)
 	: name(name)
@@ -29,6 +31,13 @@ Bureaucrat::Bureaucrat(const Bureaucrat& obj)
 	:	name(obj.name),
 		grade(obj.grade)
 {}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj) {
+	if (this != &obj) {
+		this->grade = obj.grade;
+	}
+	return *this;
+}
 
 Bureaucrat::~Bureaucrat() {}
 
