@@ -15,6 +15,13 @@
 
 /* ========== Constructors & destructor ========== */
 
+AForm::AForm()
+	:	_name("default"),
+		_signed(false),
+		_gradeReqToSign(1),
+		_gradeReqToExecute(1)
+{}
+
 AForm::AForm(const std::string name, const int gradeReqToSign, 
             const int gradeReqToExecute) 
     :   _name(name),
@@ -29,6 +36,13 @@ AForm::AForm(const AForm& obj)
         _gradeReqToSign(obj._gradeReqToSign),
         _gradeReqToExecute(obj._gradeReqToExecute)
 {}
+
+AForm& AForm::operator=(const AForm& obj) {
+	if (this != &obj) {
+		this->_signed = obj._signed;
+	}
+	return *this;
+}
 
 AForm::~AForm() {}
 

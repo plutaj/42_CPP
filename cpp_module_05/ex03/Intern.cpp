@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 18:38:19 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/02/12 19:45:14 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/03/25 16:33:37 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-Intern::Intern() {}
+Intern::Intern()
+{}
 
 Intern::Intern(const Intern& other) {
     (void)other;
@@ -26,7 +27,8 @@ Intern& Intern::operator=(const Intern& other) {
     return *this;
 }
 
-Intern::~Intern() {}
+Intern::~Intern()
+{}
 
 AForm* Intern::makeForm(std::string name, std::string target) {
     if ("presidential pardon" == name) {

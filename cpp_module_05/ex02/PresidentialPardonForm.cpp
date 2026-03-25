@@ -6,7 +6,7 @@
 /*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 17:43:21 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/03/23 17:33:42 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/03/25 16:37:39 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 	if (this != &obj) {
 		this->_target = obj._target;
 	}
+	return *this;
 }
 
-PresidentialPardonForm::~PresidentialPardonForm() {}
+PresidentialPardonForm::~PresidentialPardonForm()
+{}

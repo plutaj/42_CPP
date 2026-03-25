@@ -6,7 +6,7 @@
 /*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 17:43:25 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/03/23 17:35:28 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/03/25 16:21:26 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class RobotomyRequestForm : public AForm {
 		RobotomyRequestForm();
         RobotomyRequestForm(std::string target);
         void execute(const Bureaucrat& executor) const;
-        RobotomyRequestForm(const Bureaucrat& obj);
-        RobotomyRequestForm& operator=(const Bureaucrat& executor);
+        RobotomyRequestForm(const RobotomyRequestForm& obj);
+        RobotomyRequestForm& operator=(const RobotomyRequestForm& obj);
 		~RobotomyRequestForm();
 };
 

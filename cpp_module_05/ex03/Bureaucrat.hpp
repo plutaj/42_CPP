@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jozefpluta <jozefpluta@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 15:10:07 by jpluta            #+#    #+#             */
-/*   Updated: 2026/02/10 19:30:58 by jozefpluta       ###   ########.fr       */
+/*   Updated: 2026/03/23 17:24:17 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ class Bureaucrat {
 		int grade;
 
 	public:
+		Bureaucrat();
 		Bureaucrat(const std::string& name, int grade);
 		Bureaucrat(const Bureaucrat& obj);
+		Bureaucrat& operator=(const Bureaucrat& obj);
 		~Bureaucrat();
 		
 		void setGrade(int grade);

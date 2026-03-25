@@ -6,7 +6,7 @@
 /*   By: jpluta <jpluta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 16:39:08 by jozefpluta        #+#    #+#             */
-/*   Updated: 2026/03/23 17:18:10 by jpluta           ###   ########.fr       */
+/*   Updated: 2026/03/25 16:37:10 by jpluta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ Form& Form::operator=(const Form& obj) {
 	return *this;
 }
 
-Form::~Form() {}
+Form::~Form()
+{}
 
 /* ========== Getters & setters ========== */
 
