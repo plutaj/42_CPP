@@ -1,6 +1,6 @@
 #include "BitcoinExchange.hpp"
-#include "BitcoinExchange.h"
 #include <sstream>
+#include <stdexcept>
 
 /* ### Constructor destructor etc. ### */
 
@@ -9,25 +9,32 @@ BitcoinExchange::BitcoinExchange()
 
 BitcoinExchange::BitcoinExchange(const std::string& fileName, const std::string& inputName) {
 
-	std::string line;
+    std::string line;
 
 	std::ifstream file(fileName.c_str()); // automatically closed at the end of scope
 	if (!file.is_open())
-		throw std::runtime_error("Error: could not open database");
-	std::ifstream input(inputName);
+		throw std::runtime_error("could not open database.");
+	std::ifstream input(inputName.c_str());
 	if (!input.is_open()) {
-		throw std::runtime_error("Error: could not open inputfile");
+		throw std::runtime_error("could not open inputfile.");
 	}
 	
 	while (std::getline(file, line)) {
 		if (!ParseDatabase(line))
 			continue ;
 	}
-	while (std::getline(input, line)) {
-		if (!ParseInput(line))
-			continue ;
-	}
 
+    std::getline(input, line);
+    if (line != "date | value") {
+        throw std::runtime_error("missing header line of input file.");
+    }
+
+    while (std::getline(input, line)) {
+        if (!ParseInput(line))
+            continue ;
+    }
+
+    searchQuery();
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& obj) {
@@ -47,69 +54,31 @@ BitcoinExchange::~BitcoinExchange()
 
 /* ### Member functions & functions ### */
 
-bool BitcoinExchange::ParseDatabase(const std::string& line) {
+void BitcoinExchange::searchQuery() {
 
-	std::string date;
-	std::string strValue;
-	float value;
-	size_t commaPos;
+    std::map<std::string, float>::iterator it;
+    std::map<std::string, float>::iterator pos;
 
-	commaPos = line.find(',');
-	if (commaPos == std::string::npos) // npos is size_t max value (means no comma found)
-		return false ;
+    pos = _inputData.begin();
 
-	date = line.substr(0, commaPos);
-	strValue = line.substr(commaPos + 1);	
+    while (pos != _inputData.end()) {
 
-	std::stringstream ss(strValue);
-	ss >> value;
-	if (ss.fail() || !ss.eof() || !isValidDateFormat(date))
-		return false;
-
-	_exchangeData[date] = value;
-	return true;
+        it = _exchangeData.upper_bound(pos->first);
+        if (it == _exchangeData.begin()) {
+            std::cout << "No smaller or equal date\n";
+        } else {
+            --it;
+            std::cout << it->first << " => " << pos->second << " = " << it->second * pos->second << "\n";
+        }
+        pos++;
+    }
 }
 
-bool BitcoinExchange::ParseInput(const std::string& line) {
-
-	std::string date;
-	std::string strValue;
-	float value;
-	size_t pipe;
-
-	pipe = line.find('|');
-	if (pipe == std::string::npos) // npos is size_t max value (means no comma found)
-		return false ;
-
-	date = line.substr(0, pipe);
-	strValue = line.substr(pipe + 1);	
-
-	std::stringstream ss(strValue);
-	ss >> value;
-	if (ss.fail() || !ss.eof() || !isValidDateFormat(date))
-		return false;
-
-	_inputData[date] = value;
-	return true;
-}
-
-bool isValidDateFormat(const std::string& line) {
-
-	if (line.length() != 10)
-		return false;
-
-	if (line[4] != '-' || line[7] != '-')
-		return false;
-
-	for (int i = 0; i < 10; i++) {
-		if (i == 4 || i == 7)
-			continue;
-		if (!std::isdigit(line[i]))
-			return false;
-	}
-	if (!isDateValid(line))
-		return false;
-	return true;
+void isValidValue(float value) {
+    if (value < 0)
+        throw std::runtime_error("not a positive number.");
+    if (value > 1000)
+        throw std::runtime_error("too large number.");
 }
 
 bool isDateValid(const std::string& line) {
@@ -132,6 +101,90 @@ bool isDateValid(const std::string& line) {
 
 	if (day < 1 || day > daysInMonth[month - 1])
 		return false;
+	return true;
+}
 
+void isValidDateFormat(const std::string& line) {
+
+	if (line.length() != 10)
+        throw std::runtime_error("invalid date format.");
+
+	if (line[4] != '-' || line[7] != '-')
+        throw std::runtime_error("invalid date format.");
+
+	for (int i = 0; i < 10; i++) {
+		if (i == 4 || i == 7)
+			continue;
+		if (!std::isdigit(line[i]))
+            throw std::runtime_error("invalid date.");
+	}
+	if (!isDateValid(line))
+        throw std::runtime_error("this date doesnt exist.");
+}
+
+bool BitcoinExchange::ParseDatabase(const std::string& line) {
+
+	std::string date;
+	std::string strValue;
+	float value;
+	size_t commaPos;
+
+	commaPos = line.find(',');
+	if (commaPos == std::string::npos) // npos is size_t max value (means no comma found)
+		return false ;
+
+	date = line.substr(0, commaPos);
+	strValue = line.substr(commaPos + 1);	
+
+	std::stringstream ss(strValue);
+	ss >> value;
+	if (ss.fail() || !ss.eof()) {
+        std::cout << "Error: invalid value." << std::endl;
+		return false;
+    }
+
+    try {
+        isValidDateFormat(date);
+    } catch (const std::runtime_error& e) {
+        std::cout << "Error: " << e.what() << std::endl;
+        return false;
+    }
+
+	_exchangeData[date] = value;
+	return true;
+}
+
+bool BitcoinExchange::ParseInput(const std::string& line) {
+
+	std::string date;
+	std::string strValue;
+	float value;
+	size_t pipe;
+
+	pipe = line.find('|');
+	if (pipe == std::string::npos) { // npos is size_t max value (means no comma found)
+        std::cout << "Error: bad input => " << line << std::endl;
+		return false ;
+    }
+
+	date = line.substr(0, pipe - 1);
+	strValue = line.substr(pipe + 2);	
+
+	std::stringstream ss(strValue);
+	ss >> value;
+	if (ss.fail() || !ss.eof()) {
+        std::cout << "Error: invalid value." << std::endl;
+		return false;
+    }
+
+    try {
+        isValidValue(value);
+        isValidDateFormat(date);
+    } catch (const std::runtime_error& e) {
+        std::cout << "Error: " << e.what() << std::endl;
+        return false;
+    }
+
+	_inputData[date] = value;
 	return true;
 }

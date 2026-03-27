@@ -20,7 +20,7 @@ class BitcoinExchange {
 
 		bool ParseDatabase(const std::string& line);
 		bool ParseInput(const std::string& line);
-
+		void searchQuery();
 };
 
 #endif
