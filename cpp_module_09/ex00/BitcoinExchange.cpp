@@ -1,5 +1,6 @@
 #include "BitcoinExchange.hpp"
 #include <sstream>
+#include <cstdlib>
 #include <stdexcept>
 
 /* ### Constructor destructor etc. ### */
@@ -34,7 +35,7 @@ BitcoinExchange::BitcoinExchange(const std::string& fileName, const std::string&
             continue ;
     }
 
-    searchQuery();
+    // searchQuery();
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& obj) {
@@ -54,24 +55,26 @@ BitcoinExchange::~BitcoinExchange()
 
 /* ### Member functions & functions ### */
 
-void BitcoinExchange::searchQuery() {
+std::pair<std::string, float> p;
+
+void BitcoinExchange::searchQuery(std::pair<std::string, float> p) {
 
     std::map<std::string, float>::iterator it;
-    std::map<std::string, float>::iterator pos;
+    // std::map<std::string, float>::iterator pos;
 
-    pos = _inputData.begin();
+    // pos = _inputData.begin();
 
-    while (pos != _inputData.end()) {
+    // while (pos != _inputData.end()) {
 
-        it = _exchangeData.upper_bound(pos->first);
+        it = _exchangeData.upper_bound(p.first);
         if (it == _exchangeData.begin()) {
             std::cout << "No smaller or equal date\n";
         } else {
             --it;
-            std::cout << it->first << " => " << pos->second << " = " << it->second * pos->second << "\n";
+            std::cout << it->first << " => " << p.second << " = " << it->second * p.second << "\n";
         }
-        pos++;
-    }
+        // pos++;
+    // }
 }
 
 void isValidValue(float value) {
@@ -154,6 +157,8 @@ bool BitcoinExchange::ParseDatabase(const std::string& line) {
 	return true;
 }
 
+std::pair<std::string, float> pp;
+
 bool BitcoinExchange::ParseInput(const std::string& line) {
 
 	std::string date;
@@ -185,6 +190,8 @@ bool BitcoinExchange::ParseInput(const std::string& line) {
         return false;
     }
 
-	_inputData[date] = value;
+	pp.first = date;
+	pp.second = value;
+	searchQuery(pp);
 	return true;
 }
