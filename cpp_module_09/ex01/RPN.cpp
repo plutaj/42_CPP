@@ -4,8 +4,24 @@
 #include <cstdlib>
 #include <cctype>
 
+/* ### Constructor destructor etc. ### */
+
 RPN::RPN() {}
+
+RPN::RPN(const RPN& obj) {
+	_s = obj._s;
+}
+
+RPN& RPN::operator=(const RPN& obj) {
+	if (this != &obj) {
+		_s = obj._s;
+	}
+	return *this;
+}
+
 RPN::~RPN() {}
+
+/* ### Member functions & functions ### */
 
 bool RPN::isNumber(const std::string& token) {
 	

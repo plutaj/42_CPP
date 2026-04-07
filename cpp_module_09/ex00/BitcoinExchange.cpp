@@ -34,8 +34,6 @@ BitcoinExchange::BitcoinExchange(const std::string& fileName, const std::string&
         if (!ParseInput(line))
             continue ;
     }
-
-    // searchQuery();
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& obj) {
@@ -60,21 +58,14 @@ std::pair<std::string, float> p;
 void BitcoinExchange::searchQuery(std::pair<std::string, float> p) {
 
     std::map<std::string, float>::iterator it;
-    // std::map<std::string, float>::iterator pos;
 
-    // pos = _inputData.begin();
-
-    // while (pos != _inputData.end()) {
-
-        it = _exchangeData.upper_bound(p.first);
-        if (it == _exchangeData.begin()) {
-            std::cout << "No smaller or equal date\n";
-        } else {
-            --it;
-            std::cout << it->first << " => " << p.second << " = " << it->second * p.second << "\n";
-        }
-        // pos++;
-    // }
+	it = _exchangeData.upper_bound(p.first);
+	if (it == _exchangeData.begin()) {
+		std::cout << "No smaller or equal date\n";
+	} else {
+		--it;
+		std::cout << it->first << " => " << p.second << " = " << it->second * p.second << "\n";
+	}
 }
 
 void isValidValue(float value) {
@@ -158,50 +149,6 @@ bool BitcoinExchange::ParseDatabase(const std::string& line) {
 }
 
 std::pair<std::string, float> pp;
-
-// bool BitcoinExchange::ParseInput(const std::string& line) {
-
-// 	std::string date;
-// 	std::string strValue;
-// 	float value;
-// 	size_t pipe;
-
-// 	pipe = line.find('|');
-// 	if (pipe == std::string::npos) { // npos is size_t max value (means no comma found)
-//         std::cout << "Error: bad input => " << line << std::endl;
-// 		return false ;
-//     }
-
-// 	std::stringstream ss_left(line.substr(0, pipe - 1));
-// 	ss_left >> std::ws; // skips spaces and tabs
-// 	std::getline(ss_left, date);
-
-// 	std::stringstream ss_right(line.substr(pipe + 2));
-// 	ss_right >> std::ws; // skips spaces and tabs
-// 	std::getline(ss_right, strValue);
-
-// 	// strValue = line.substr(pipe + 2);	
-
-// 	// std::stringstream ss(strValue);
-// 	if (ss_right.fail() || !ss_right.eof()) {
-// 		std::cout << "Error: invalid value." << std::endl;
-// 		return false;
-//     }
-// 	ss_right >> value;
-
-//     try {
-//         isValidValue(value);
-//         isValidDateFormat(date);
-//     } catch (const std::runtime_error& e) {
-//         std::cout << "Error: " << e.what() << std::endl;
-//         return false;
-//     }
-
-// 	pp.first = date;
-// 	pp.second = value;
-// 	searchQuery(pp);
-// 	return true;
-// }
 
 bool BitcoinExchange::ParseInput(const std::string& line) {
 
